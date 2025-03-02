@@ -35,7 +35,7 @@ Before running this automation, ensure you have the following:
    - TC Goetz has done an amazing job at developing this library, and I highly recommend you follow his installation guide before continuing.
    - Link: [GarminDB](https://github.com/tcgoetz/GarminDB)
   
-2.  **Place the 2 Python scripts on your desktop**
+2.  **Place the 2 Python scripts on your desktop and run the SQL scripts in SSMS**
    
 3. **Configure Python Environment**:
    - Ensure Python and required libraries are installed:

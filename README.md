@@ -1,14 +1,15 @@
 # Garmin Connect Data Extraction and Upsert Automation
 
 ## Overview
-This UiPath automation extracts fitness data from Garmin Connect using a Python script, converts the data into CSV format using another Python script, and then upserts the data into an MS SQL database. The automation ensures seamless data integration for further analysis and reporting. The [GarminDB](https://github.com/tcgoetz/GarminDB) project provides Python scripts to download, parse, and analyze data from Garmin Connect, storing it in SQLite databases. The project's README offers comprehensive guidance on its features, installation, and usage. This project is merely an extension of the work done by [TC Goetz](https://github.com/tcgoetz) to automate the process.
+This UiPath automation extracts fitness data from Garmin Connect using a Python script, converts the data into CSV format using another Python script, and then upserts the data into an MS SQL or Influx database. The automation ensures seamless data integration for further analysis and reporting. The [GarminDB](https://github.com/tcgoetz/GarminDB) project provides Python scripts to download, parse, and analyze data from Garmin Connect, storing it in SQLite databases. The project's README offers comprehensive guidance on its features, installation, and usage. This project is merely an extension of the work done by [TC Goetz](https://github.com/tcgoetz) to automate the process.
 
 ## Prerequisites
 Before running this automation, ensure you have the following:
 
 - **UiPath Studio** installed and configured
 - **Python 3.x** installed with required dependencies
-- **MS SQL Server** with the necessary database and table setup
+- **MS SQL Server** with the necessary database and table setup (Scripts in scripts folder)
+- **InfluxDB** with the necessary bucket, organisation and token setup
 - **Garmin Connect Account** with valid credentials for data extraction
 
 ## Automation Workflow

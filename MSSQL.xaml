@@ -1,0 +1,799 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="MSSQL" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="dtdaily_summary_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtmonitoring_hr_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtmonitoring_rr_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtsleep_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtresting_hr_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtstress_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtsleep_events_filtered" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dtmonitoring_filtered" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Globalization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="MSSQL" sap:VirtualizedContainerService.HintSize="1128,4741" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
+      <Variable x:TypeArguments="x:String" Name="strUsername" />
+      <Variable x:TypeArguments="x:String" Name="strDBConn" />
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConnection" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Get DB Credentials"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user creds" AssetName="MSSQLCredentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="soutiessandbox" sap:VirtualizedContainerService.HintSize="418,206" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1">
+      <ui:GetRobotCredential.Password>
+        <OutArgument x:TypeArguments="ss:SecureString">
+          <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">strPassword</CSharpReference>
+        </OutArgument>
+      </ui:GetRobotCredential.Password>
+      <ui:GetRobotCredential.Username>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">strUsername</CSharpReference>
+        </OutArgument>
+      </ui:GetRobotCredential.Username>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetRobotCredential>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Get MSSQLConnectionString"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database connection string" AssetName="MSSQLConnectionString" CacheStrategy="None" DisplayName="Get Asset" FolderPath="soutiessandbox" sap:VirtualizedContainerService.HintSize="418,206" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">strDBConn</CSharpReference>
+        </OutArgument>
+      </ui:GetRobotAsset.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetRobotAsset>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">"Connect to DB"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="418,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:DatabaseConnect.ConnectionString>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">strDBConn+"User ID="+strUsername+";Password="+new System.Net.NetworkCredential(string.Empty, strPassword).Password</CSharpValue>
+        </InArgument>
+      </ui:DatabaseConnect.ConnectionString>
+      <ui:DatabaseConnect.DatabaseConnection>
+        <OutArgument x:TypeArguments="ui:DatabaseConnection">
+          <CSharpReference x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">dbConnection</CSharpReference>
+        </OutArgument>
+      </ui:DatabaseConnect.DatabaseConnection>
+    </ui:DatabaseConnect>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">"UpsertMonitoring"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="UpsertMonitoring" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@timestamp">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">DateTime.Parse(row["timestamp"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="@activity_type">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">!string.IsNullOrEmpty(row["activity_type"].ToString()) ? row["activity_type"].ToString() : "N/A"</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@intensity">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">!string.IsNullOrEmpty(row["intensity"].ToString()) ? float.Parse(row["intensity"].ToString(), CultureInfo.InvariantCulture) : 0.0f</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@duration">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">!string.IsNullOrEmpty(row["duration"].ToString()) ? TimeSpan.Parse(row["duration"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@distance">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">!string.IsNullOrEmpty(row["distance"].ToString()) ? float.Parse(row["distance"].ToString(), CultureInfo.InvariantCulture) : 0.0f</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@cum_active_time">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">!string.IsNullOrEmpty(row["cum_active_time"].ToString()) ? TimeSpan.Parse(row["cum_active_time"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@active_calories">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">!string.IsNullOrEmpty(row["active_calories"].ToString()) ? float.Parse(row["active_calories"].ToString(), CultureInfo.InvariantCulture) : 0.0f</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@steps">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">!string.IsNullOrEmpty(row["steps"].ToString()) ? float.Parse(row["steps"].ToString(), CultureInfo.InvariantCulture) : 0.0f</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@strokes">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16" xml:space="preserve">!string.IsNullOrEmpty(row["strokes"].ToString())  ? float.Parse(row["strokes"].ToString(), CultureInfo.InvariantCulture) : 0.0f</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@cycles">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">!string.IsNullOrEmpty(row["intensity"].ToString()) ? float.Parse(row["intensity"].ToString(), CultureInfo.InvariantCulture) : 0.0f</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">dtmonitoring_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">"UpsertRestingHR"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2" Sql="UpsertRestingHR" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@day">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">DateTime.Parse(row["day"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@resting_heart_rate">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">!string.IsNullOrEmpty(row["resting_heart_rate"].ToString()) ? double.Parse(row["resting_heart_rate"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">dtresting_hr_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,57" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">"UpsertSleep"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_3" Sql="UpsertSleep" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@day">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">DateTime.Parse(row["day"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@start">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">!string.IsNullOrEmpty(row["start"].ToString()) ? DateTime.Parse(row["start"].ToString(), CultureInfo.InvariantCulture) : DateTime.Parse("1970/01/01 00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@end">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">!string.IsNullOrEmpty(row["end"].ToString()) ? DateTime.Parse(row["end"].ToString(), CultureInfo.InvariantCulture) : DateTime.Parse("1970/01/01 00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@total_sleep">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">!string.IsNullOrEmpty(row["total_sleep"].ToString()) ? TimeSpan.Parse(row["total_sleep"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@deep_sleep">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">!string.IsNullOrEmpty(row["deep_sleep"].ToString()) ? TimeSpan.Parse(row["deep_sleep"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@light_sleep">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">!string.IsNullOrEmpty(row["light_sleep"].ToString()) ? TimeSpan.Parse(row["light_sleep"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@rem_sleep">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">!string.IsNullOrEmpty(row["rem_sleep"].ToString()) ? TimeSpan.Parse(row["rem_sleep"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@awake">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">!string.IsNullOrEmpty(row["awake"].ToString()) ? TimeSpan.Parse(row["awake"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@avg_spo2">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">!string.IsNullOrEmpty(row["avg_spo2"].ToString()) ? double.Parse(row["avg_spo2"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@avg_rr">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">!string.IsNullOrEmpty(row["avg_rr"].ToString()) ? double.Parse(row["avg_rr"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@avg_stress">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">!string.IsNullOrEmpty(row["avg_stress"].ToString()) ? double.Parse(row["avg_stress"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@score">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">!string.IsNullOrEmpty(row["score"].ToString()) ? double.Parse(row["score"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@qualifier">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">!string.IsNullOrEmpty(row["qualifier"].ToString()) ? double.Parse(row["qualifier"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">dtsleep_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,57" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">"UpsertDailySummary"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_4" Sql="UpsertDailySummary" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@day">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">DateTime.Parse(row["day"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@hr_min">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_43">!string.IsNullOrEmpty(row["hr_min"].ToString()) ? double.Parse(row["hr_min"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@hr_max">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">!string.IsNullOrEmpty(row["hr_max"].ToString()) ? double.Parse(row["hr_max"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@rhr">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_45">!string.IsNullOrEmpty(row["rhr"].ToString()) ? double.Parse(row["rhr"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@stress_avg">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">!string.IsNullOrEmpty(row["stress_avg"].ToString()) ? double.Parse(row["stress_avg"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@step_goal">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_47">!string.IsNullOrEmpty(row["step_goal"].ToString()) ? double.Parse(row["step_goal"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@steps">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">!string.IsNullOrEmpty(row["steps"].ToString()) ? double.Parse(row["steps"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@moderate_activity_time">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49">!string.IsNullOrEmpty(row["moderate_activity_time"].ToString()) ? TimeSpan.Parse(row["moderate_activity_time"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@vigorous_activity_time">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">!string.IsNullOrEmpty(row["vigorous_activity_time"].ToString()) ? TimeSpan.Parse(row["vigorous_activity_time"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@intensity_time_goal">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_51">!string.IsNullOrEmpty(row["intensity_time_goal"].ToString()) ? TimeSpan.Parse(row["intensity_time_goal"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@floors_up">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_52">!string.IsNullOrEmpty(row["floors_up"].ToString()) ? double.Parse(row["floors_up"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@floors_down">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">!string.IsNullOrEmpty(row["floors_down"].ToString()) ? double.Parse(row["floors_down"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@floors_goal">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">!string.IsNullOrEmpty(row["floors_goal"].ToString()) ? double.Parse(row["floors_goal"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@distance">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">!string.IsNullOrEmpty(row["distance"].ToString()) ? double.Parse(row["distance"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@calories_goal">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">!string.IsNullOrEmpty(row["calories_goal"].ToString()) ? double.Parse(row["calories_goal"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@calories_total">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">!string.IsNullOrEmpty(row["calories_total"].ToString()) ? double.Parse(row["calories_total"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@calories_bmr">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">!string.IsNullOrEmpty(row["calories_bmr"].ToString()) ? double.Parse(row["calories_bmr"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@calories_active">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">!string.IsNullOrEmpty(row["calories_active"].ToString()) ? double.Parse(row["calories_active"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@calories_consumed">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">!string.IsNullOrEmpty(row["calories_consumed"].ToString()) ? double.Parse(row["calories_consumed"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@hydration_goal">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">!string.IsNullOrEmpty(row["hydration_goal"].ToString()) ? double.Parse(row["hydration_goal"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@hydration_intake">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">!string.IsNullOrEmpty(row["hydration_intake"].ToString()) ? double.Parse(row["hydration_intake"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@sweat_loss">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">!string.IsNullOrEmpty(row["sweat_loss"].ToString()) ? double.Parse(row["sweat_loss"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@spo2_avg">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">!string.IsNullOrEmpty(row["spo2_avg"].ToString()) ? double.Parse(row["spo2_avg"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@spo2_min">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">!string.IsNullOrEmpty(row["spo2_min"].ToString()) ? double.Parse(row["spo2_min"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@rr_waking_avg">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">!string.IsNullOrEmpty(row["rr_waking_avg"].ToString()) ? double.Parse(row["rr_waking_avg"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@rr_max">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">!string.IsNullOrEmpty(row["rr_max"].ToString()) ? double.Parse(row["rr_max"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@rr_min">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">!string.IsNullOrEmpty(row["rr_min"].ToString()) ? double.Parse(row["rr_min"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@bb_charged">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">!string.IsNullOrEmpty(row["bb_charged"].ToString()) ? double.Parse(row["bb_charged"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@bb_max">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">!string.IsNullOrEmpty(row["bb_max"].ToString()) ? double.Parse(row["bb_max"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@bb_min">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">!string.IsNullOrEmpty(row["bb_min"].ToString()) ? double.Parse(row["bb_min"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="@description">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_72">!string.IsNullOrEmpty(row["description"].ToString()) ? row["description"].ToString() : "N/A"</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">dtdaily_summary_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,57" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">"UpsertStress"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_5" Sql="UpsertStress" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_75">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@timestamp">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_76">DateTime.Parse(row["timestamp"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@stress">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77">!string.IsNullOrEmpty(row["stress"].ToString()) ? double.Parse(row["stress"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_74">dtstress_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,57" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">"UpsertMonitoringRR"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_6" Sql="UpsertMonitoringRR" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@timestamp">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">DateTime.Parse(row["timestamp"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@rr">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_82">!string.IsNullOrEmpty(row["rr"].ToString()) ? double.Parse(row["rr"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">dtmonitoring_rr_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,57" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">"UpsertSleepEvent"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,377" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_7" Sql="UpsertSleepEvent" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@timestamp">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_86">DateTime.Parse(row["timestamp"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="@event">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_87">!string.IsNullOrEmpty(row["event"].ToString()) ? row["event"].ToString() : "Unknown Event"</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="@duration">
+                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">!string.IsNullOrEmpty(row["duration"].ToString()) ? TimeSpan.Parse(row["duration"].ToString(), CultureInfo.InvariantCulture) : TimeSpan.Parse("00:00:00.000000")</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">dtsleep_events_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,57" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89">"UpsertMonitoringHR"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="418,368" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,197" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" CommandType="StoredProcedure" DisplayName="Run Command" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_8" Sql="UpsertMonitoringHR" TimeoutMS="999999999">
+              <ui:ExecuteNonQuery.ExistingDbConnection>
+                <InArgument x:TypeArguments="ui:DatabaseConnection">
+                  <CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91">dbConnection</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.ExistingDbConnection>
+              <ui:ExecuteNonQuery.Parameters>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="@timestamp">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">DateTime.Parse(row["timestamp"].ToString())</CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@heart_rate">
+                  <CSharpValue x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="CSharpValue`1_93">!string.IsNullOrEmpty(row["heart_rate"].ToString()) ? double.Parse(row["heart_rate"].ToString(), CultureInfo.InvariantCulture) : 0.0d</CSharpValue>
+                </InArgument>
+              </ui:ExecuteNonQuery.Parameters>
+            </ui:ExecuteNonQuery>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">dtmonitoring_hr_filtered</CSharpValue>
+        </InArgument>
+      </ui:ForEachRow.DataTable>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+  </Sequence>
+</Activity>

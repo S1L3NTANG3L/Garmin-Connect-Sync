@@ -348,9 +348,9 @@
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
-                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49" xml:space="preserve">strDesktopPath + "\\" + strScript3FileName + " " + 
+                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60" xml:space="preserve">strDesktopPath + "\\" + strScript3FileName + " " + 
 "--url " + "\"" + strInfluxDB + "\" " + 
-"--token " + "\"" + new System.Net.NetworkCredential(string.Empty, strPassword).Password + "\" " + 
+"--token " + "\"" + "TOKEN" + "\" " + 
 "--org " + "\"" + strInfluxOrg + "\" " + 
 "--bucket " + "\"" + strInfluxBucket + "\" " + 
 "--file " + "\"" + strDesktopPath + "\\" + strCSVOutputFolderName + "\\" + currentText + "\" " + 

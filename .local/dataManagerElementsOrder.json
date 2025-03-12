@@ -1,0 +1,136 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intDays&Sequence_1",
+        "strDBType&Sequence_1",
+        "strScript3FileName&Sequence_1",
+        "strInfluxBucket&Sequence_1",
+        "arrCSVNames&Sequence_1",
+        "strUserPath&Sequence_1",
+        "strScript1Parameters&Sequence_1",
+        "strDesktopPath&Sequence_1",
+        "strScript1FileName&Sequence_1",
+        "strLocalAppDataPath&Sequence_1",
+        "strPythonPath&Sequence_1",
+        "boolExists&Sequence_1",
+        "arrDBNames&Sequence_1",
+        "strScript2FileName&Sequence_1",
+        "strCSVOutputFolderName&Sequence_1",
+        "arrCSVFiles&Sequence_1",
+        "dtdaily_summary_filtered&Sequence_1",
+        "dtmonitoring_hr_filtered&Sequence_1",
+        "dtmonitoring&Sequence_1",
+        "dtmonitoring_rr_filtered&Sequence_1",
+        "dtsleep_filtered&Sequence_1",
+        "dtresting_hr_filtered&Sequence_1",
+        "dtstress_filtered&Sequence_1",
+        "dtsleep_events_filtered&Sequence_1",
+        "strmonitoring&Sequence_1",
+        "strmonitoring_hr&Sequence_1",
+        "strmonitoring_rr&Sequence_1",
+        "strdaily_summary&Sequence_1",
+        "strresting_hr&Sequence_1",
+        "strsleep&Sequence_1",
+        "strstress&Sequence_1",
+        "strsleep_events&Sequence_1",
+        "dtmonitoring_filtered&Sequence_1",
+        "dtmonitoring_hr&Sequence_1",
+        "dtmonitoring_rr&Sequence_1",
+        "dtdaily_summary&Sequence_1",
+        "dtresting_hr&Sequence_1",
+        "dtsleep&Sequence_1",
+        "dtstress&Sequence_1",
+        "dtsleep_events&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": [
+        "System.Xml.Linq",
+        "System.Linq",
+        "System.Data",
+        "System.Xml",
+        "System.Xml.Serialization",
+        "System.Data.SqlClient",
+        "System.Data.Odbc"
+      ]
+    },
+    {
+      "Path": "GlobalExceptionHandler.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "answer&Sequence_1",
+        "retry&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "errorInfo",
+        "result"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "InfluxDB.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strUsername&Sequence_1",
+        "strPassword&Sequence_1",
+        "strInfluxDB&Sequence_1",
+        "strInfluxOrg&Sequence_1",
+        "intI&Sequence_1",
+        "forEachCurrentIndex&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "dtdaily_summary_filtered",
+        "dtmonitoring_hr_filtered",
+        "dtmonitoring_rr_filtered",
+        "dtsleep_filtered",
+        "dtresting_hr_filtered",
+        "dtstress_filtered",
+        "dtsleep_events_filtered",
+        "dtmonitoring_filtered",
+        "arrCSVNames",
+        "strPythonPath",
+        "strDesktopPath",
+        "strScript3FileName",
+        "strCSVOutputFolderName",
+        "strInfluxBucket",
+        "arrCSVFiles"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "MSSQL.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strPassword&Sequence_1",
+        "strUsername&Sequence_1",
+        "strDBConn&Sequence_1",
+        "dbConnection&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "dtdaily_summary_filtered",
+        "dtmonitoring_hr_filtered",
+        "dtmonitoring_rr_filtered",
+        "dtsleep_filtered",
+        "dtresting_hr_filtered",
+        "dtstress_filtered",
+        "dtsleep_events_filtered",
+        "dtmonitoring_filtered"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
